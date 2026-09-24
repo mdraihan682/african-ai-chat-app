@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         override fun onReceive(context: Context, intent: Intent) {
             val id = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1)
             if (id == downloader.getLastDownloadId()) {
-                chatHistory.append("AI: Model downloaded! You can now chat.\n\n")
+                chatHistory.append("AI: Model downloaded successfully!\n\n")
                 downloadButton.visibility = View.GONE
                 enableChat(true)
                 scrollView.post { scrollView.fullScroll(View.FOCUS_DOWN) }
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         }
         chatHistory = TextView(this).apply {
             textSize = 16f
-            text = "AI: Hello! I am your offline AI assistant. Ask me anything.\n\n"
+            text = "AI: Hello! I am your offline AI assistant for African languages. Tap 'Download AI Model' to begin.\n\n"
         }
         scrollView.addView(chatHistory)
         mainLayout.addView(scrollView)
@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
 
         val modelFile = File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), modelFileName)
         if (modelFile.exists()) {
-            chatHistory.append("AI: Model found. Ready to chat!\n\n")
+            chatHistory.append("AI: Model found on device. Ready to chat!\n\n")
             downloadButton.visibility = View.GONE
             enableChat(true)
         } else {
@@ -118,8 +118,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         downloadButton.setOnClickListener {
-            Toast.makeText(this, "Download starting on Wi-Fi...", Toast.LENGTH_LONG).show()
-            chatHistory.append("AI: Starting model download... Please wait.\n\n")
+            Toast.makeText(this, "Download starting. Keep Wi-Fi on.", Toast.LENGTH_LONG).show()
+            chatHistory.append("AI: Starting model download (~8 GB). Please wait...\n\n")
             downloadButton.visibility = View.GONE
             downloader.downloadModel()
         }

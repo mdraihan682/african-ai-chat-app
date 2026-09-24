@@ -17,7 +17,7 @@ class ModelDownloader(private val context: Context) {
 
         val request = DownloadManager.Request(Uri.parse(modelUrl))
             .setTitle("African AI Model Download")
-            .setDescription("Downloading model to run offline...")
+            .setDescription("Downloading offline AI model (~8 GB)")
             .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
             .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI)
             .setDestinationInExternalFilesDir(context, Environment.DIRECTORY_DOWNLOADS, fileName)
